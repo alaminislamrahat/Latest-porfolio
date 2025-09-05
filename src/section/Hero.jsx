@@ -6,8 +6,12 @@ import { Canvas } from "@react-three/fiber";
 import { Planet } from "../components/Planet";
 import { AmbientLight } from "three";
 import { Environment, Float, Lightformer } from "@react-three/drei";
+import { useMediaQuery } from "react-responsive";
 
 const Hero = () => {
+
+    const isMobile = useMediaQuery({maxWidth : 853})
+
     const contextRef = useRef(null);
     const headerRef = useRef(null);
     const aboutText = `I help growing brands and startups gain an
@@ -47,12 +51,12 @@ results driven webs`;
                 </div>
             </div>
             <figure
-            style={{height: "100vh", width : "100vh"}}
-            className="absolute left-[50vh] -z-50 inset-0">
+            style={{height: "100vh", width : "100vw"}}
+            className="absolute  -z-50 inset-0">
                 <Canvas shadows camera={{position: [0, 0, -10], fov: 17.5, near: 1, far: 20 }}>
                     <ambientLight intensity={0.5}/>
                     <Float speed={0.5}>
-                         <Planet/>
+                         <Planet scale={isMobile ? 0.7 : 1}/>
                     </Float>
                    
                     <Environment resolution={256}>
