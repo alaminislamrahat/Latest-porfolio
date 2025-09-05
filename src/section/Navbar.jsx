@@ -1,4 +1,4 @@
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { socials } from "../constants";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -12,7 +12,8 @@ const Navbar = () => {
     const iconTl = useRef(null);
     const tl = useRef(null);
 
-    const [isOpen, setIsOpen ] = useState(false)
+    const [isOpen, setIsOpen ] = useState(false);
+    const [showBerger, setShowBerger] = useState(true)
 
     
 
@@ -57,6 +58,25 @@ const Navbar = () => {
         ease: "power2.inOut"
     },"<")
 
+    },[]);
+
+
+    useEffect(()=>{
+
+        let lastCrollY = window.scrollY;
+
+        const handleScroll = ()=> {
+            const currentScrollY = window.scrollY;
+
+            setShowBerger(currentScrollY <= lastCrollY || currentScrollY < 10);
+            lastCrollY = currentScrollY
+        }
+
+        window.addEventListener("scroll", handleScroll, {
+            passive: true,
+        });
+
+        return ()=> window.removeEventListener("scroll", handleScroll,)
     },[])
 
 
@@ -109,6 +129,8 @@ const Navbar = () => {
 
     <div className="fixed z-50 flex flex-col items-center justify-center gap-1 transition-all duration-300 bg-black rounded-full cursor-pointer w-14 h-14 md:w-20 md:h-20 top-4 right-10" 
     onClick={toggleMenu}
+
+    style={showBerger ? {clipPath : "circle(50% at 50% 50%)"} : {clipPath : "circle(0% at 50% 50%)"}}
     >
         <span ref={topLineRef} className="block w-8 h-0.5 bg-white rounded-full origin-center"></span>
         <span ref={bottomLineRef} className="block w-8 h-0.5 bg-white rounded-full origin-center"></span>
