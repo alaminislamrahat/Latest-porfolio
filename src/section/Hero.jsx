@@ -1,55 +1,25 @@
-import { useRef } from "react"
-import AnimatedLines from "../components/AnimatedLines"
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+
 import { Canvas } from "@react-three/fiber";
 import { Planet } from "../components/Planet";
-import { AmbientLight } from "three";
 import { Environment, Float, Lightformer } from "@react-three/drei";
 import { useMediaQuery } from "react-responsive";
+import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
 
 const Hero = () => {
 
     const isMobile = useMediaQuery({maxWidth : 853})
 
-    const contextRef = useRef(null);
-    const headerRef = useRef(null);
     const aboutText = `I help growing brands and startups gain an
-unfair advantage through premium
-results driven webs`;
-
-    useGSAP(()=>{
-        const tl = gsap.timeline();
-        tl.from(contextRef.current,{
-            y: "50vh",
-            duration: 1,
-            ease: "circ.out"
-        }).from(headerRef.current,{
-            opacity: 0,
-            y: 200,
-            duration: 1,
-            ease: "circ.out"
-        },"<+0.2")
-    },[])
+       unfair advantage through premium
+       results driven webs`;
     return (
         <section id="home" className="flex flex-col justify-end min-h-screen">
-            <div ref={contextRef}>
-                <div style={{ clipPath: " polygon(0 0, 100% 0%, 100% 100%, 0% 100%)" }}>
-                    <div ref={headerRef} className="flex flex-col gap-12 pt-16 justify-center sm:gap-16">
-                        <p className="text-sm font-light tracking-[0.5rem] uppercase px-10 text-black">404 no Bugs Found</p>
-                        <div className="px-10">
-                            <h1 className="flex flex-col flex-wrap text-black gap-12 uppercase banner-text-responsive sm:gap-16 md:block">Md. Al-Amin Islam Rahat</h1>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="relative px-10 text-black">
-                    <div className="absolute inset-x-0 border-t-2" />
-                    <div className="py-12 sm:py-16 text-end">
-                        <AnimatedLines text={aboutText} className="font-light uppercase value-text-responsive"></AnimatedLines>
-                    </div>
-                </div>
-            </div>
+            <AnimatedHeaderSection 
+            subTitle={"404 No Bugs Found"}
+            title={"Md. Al-Amin Islam Rahat"}
+            text={aboutText}
+            textColor={"text-black"}
+            />
             <figure
             style={{height: "100vh", width : "100vw"}}
             className="absolute  -z-50 inset-0">

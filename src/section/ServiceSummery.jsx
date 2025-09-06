@@ -26,7 +26,7 @@ const ServiceSummery = () => {
     )
     gsap.to("#title-service-3",
       {
-        xPercent: 100,
+        xPercent: 20,
         scrollTrigger: {
           trigger: "#title-service-3",
           scrub: true,
@@ -35,7 +35,7 @@ const ServiceSummery = () => {
     )
     gsap.to("#title-service-4",
       {
-        xPercent: -100,
+        xPercent: -20,
         scrollTrigger: {
           trigger: "#title-service-4",
           scrub: true,

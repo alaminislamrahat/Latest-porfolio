@@ -5,9 +5,10 @@ import { useRef } from "react"
 gsap.registerPlugin(ScrollTrigger)
 
 const AnimatedLines = ({text, className}) => {
+    console.log(text)
     const containerRef = useRef(null);
     const lineRef = useRef([])
-    const lines = text.split("\n").filter(line => line.trim() !== "")
+    const lines = text?.split("\n")?.filter(line => line?.trim() !== "")
 
     useGSAP(()=>{
         if(lineRef.current.length > 0){
@@ -25,7 +26,7 @@ const AnimatedLines = ({text, className}) => {
     })
   return (
     <div ref={containerRef} className={className}>
-        {lines.map((line, index) => (
+        {lines?.map((line, index) => (
             <span
             key={index}
             ref={(el)=> (lineRef.current[index] = el)}
