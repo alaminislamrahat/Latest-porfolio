@@ -1,82 +1,64 @@
 // index.js
 export const servicesData = [
   {
-    title: "FullStack Development",
+    title: "FullStack Web Development",
     description:
-      "Your business deserves a fast, secure, and future-proof digital foundation. I develop custom web apps with clean architecture, optimized databases, and seamless integrations—ensuring reliability at every layer.",
+      "I build modern, responsive, and high-performance web applications with clean architecture and seamless user experience.",
     items: [
       {
-        title: "Backend Engineering",
-        description: "(REST/GraphQL APIs, Microservices, Auth Systems)",
+        title: "Backend Development",
+        description: "(Node.js, Express.js, MongoDB, REST APIs, Authentication)",
       },
       {
-        title: "Frontend Excellence",
-        description: "(React, Vue, TypeScript, Interactive UI/UX)",
+        title: "Frontend Development",
+        description: "(React.js, Next.js, TypeScript, Tailwind CSS, DaisyUI, Responsive Design)",
       },
       {
-        title: "Database Design",
-        description: "(SQL/NoSQL Optimization, Scalable Structures)",
+        title: "Database Management",
+        description: "(MongoDB, Mongoose, Data Modeling, Optimized Queries)",
       },
     ],
   },
   {
-    title: "DevOps & Cloud Solutions",
+    title: "Web Animations & Interactivity",
     description:
-      "Deploying software shouldn't be a gamble. I automate infrastructure, enforce security, and leverage cloud platforms (AWS/Azure) to keep your app running smoothly—24/7, at any scale.",
+      "I create engaging and interactive web experiences using advanced animations and smooth UI effects.",
     items: [
       {
-        title: "CI/CD Pipelines",
-        description: "(GitHub Actions, Docker, Kubernetes)",
+        title: "GSAP Animations",
+        description: "(ScrollTrigger, ScrollSmoother, Timelines, Interactive UI Effects)",
       },
       {
-        title: "Server Management ",
-        description: "(Linux, Nginx, Load Balancing)",
+        title: "Framer Motion",
+        description: "(Component Animations, Page Transitions, Hover Effects)",
       },
       {
-        title: "Performance Tuning",
-        description: "(Caching, Compression, Lighthouse 90+ Scores)",
+        title: "UX Enhancements",
+        description: "(Smooth Scrolling, Sticky Elements, Parallax Effects, Responsive Interactions)",
       },
     ],
   },
   {
-    title: "Security & Optimization",
+    title: "CMS & Website Builders",
     description:
-      "Slow or hacked apps destroy trust. I harden security (XSS/SQLI protection, OAuth) and optimize bottlenecks so your app stays fast, safe, and scalable as you grow.",
+      "I build and customize websites using popular CMS platforms for clients who need fast and manageable solutions.",
     items: [
       {
-        title: "Code Audits",
-        description: "(Refactoring, Tech Debt Cleanup)",
+        title: "Squarespace",
+        description: "(Custom Templates, Responsive Design, SEO Setup)",
       },
       {
-        title: "Pen Testing",
-        description: "(Vulnerability Assessments)",
+        title: "Webflow",
+        description: "(Custom Interactions, CMS Collections, Hosting Setup)",
       },
       {
-        title: "SEO Tech Stack",
-        description: "(SSR, Metadata, Structured Data)",
-      },
-    ],
-  },
-  {
-    title: "Web & Mobile Apps",
-    description:
-      "A clunky interface can sink even the best ideas. I craft responsive, pixel perfect web and mobile apps (React Native/Flutter) that users love—bridging design and functionality seamlessly.",
-    items: [
-      {
-        title: "Cross-Platform Apps",
-        description: "(Single codebase for iOS/Android/Web)",
-      },
-      {
-        title: "PWAs",
-        description: "(Offline mode, Push Notifications)",
-      },
-      {
-        title: "E-Commerce",
-        description: "(Checkout flows, Payment Gateways, Inventory APIs)",
+        title: "Other Web Builders",
+        description: "(Wix, Elementor, Tailored CMS Solutions)",
       },
     ],
   },
 ];
+
 export const projects = [
   {
     id: 1,

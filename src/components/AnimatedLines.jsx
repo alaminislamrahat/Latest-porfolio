@@ -5,7 +5,7 @@ import { useRef } from "react"
 gsap.registerPlugin(ScrollTrigger)
 
 const AnimatedLines = ({text, className}) => {
-    console.log(text)
+    // console.log(text)
     const containerRef = useRef(null);
     const lineRef = useRef([])
     const lines = text?.split("\n")?.filter(line => line?.trim() !== "")
