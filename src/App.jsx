@@ -1,6 +1,7 @@
 import Navbar from './section/Navbar'
 import Hero from './section/Hero'
 import ServiceSummery from './section/ServiceSummery'
+import Services from './section/Services'
 
 const App = () => {
   return (
@@ -8,6 +9,8 @@ const App = () => {
       <Navbar/>
       <Hero/>
       <ServiceSummery/>
+      <Services/>
+     
     </div>
   )
 }
