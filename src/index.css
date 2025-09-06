@@ -131,5 +131,5 @@ body {
 }
 
 @utility contact-text-responsive {
-  @apply text-[42px] sm:text-[52px] md:text-[62px] lg:text-[100px];
+  @apply text-[25px] sm:text-[45px] md:text-[50px] lg:text-[60px];
 }
