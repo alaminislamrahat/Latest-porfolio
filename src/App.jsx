@@ -7,6 +7,7 @@ import { ScrollSmoother, ScrollTrigger } from 'gsap/all'
 import { useGSAP } from '@gsap/react'
 import ReactLenis from 'lenis/react'
 import About from './section/About'
+import Works from './section/Works'
 gsap.registerPlugin(ScrollTrigger)
 const App = () => {
  
@@ -19,6 +20,7 @@ const App = () => {
           <ServiceSummery />
           <Services />
           <About/>
+          <Works/>
           <section className='min-h-screen'></section>
     </ReactLenis>
   )
