@@ -10,18 +10,18 @@ import About from './section/About'
 import Works from './section/Works'
 gsap.registerPlugin(ScrollTrigger)
 const App = () => {
- 
+
 
   return (
     <ReactLenis root className='relative min-h-screen w-screen '>
       <Navbar />
-     
-          <Hero />
-          <ServiceSummery />
-          <Services />
-          <About/>
-          <Works/>
-          <section className='min-h-screen'></section>
+
+      <Hero />
+      <ServiceSummery />
+      <Services />
+      <About />
+      <Works />
+      <section className='min-h-screen'></section>
     </ReactLenis>
   )
 }
