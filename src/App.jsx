@@ -3,10 +3,11 @@ import Hero from './section/Hero'
 import ServiceSummery from './section/ServiceSummery'
 import Services from './section/Services'
 import gsap from 'gsap'
-import { ScrollSmoother } from 'gsap/all'
+import { ScrollSmoother, ScrollTrigger } from 'gsap/all'
 import { useGSAP } from '@gsap/react'
 import ReactLenis from 'lenis/react'
 // gsap.registerPlugin(ScrollSmoother)
+gsap.registerPlugin(ScrollTrigger)
 const App = () => {
   // useGSAP(() => {
   //   ScrollSmoother.create({

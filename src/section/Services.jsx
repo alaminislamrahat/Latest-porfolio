@@ -2,6 +2,8 @@ import { useRef } from "react";
 import AnimatedHeaderSection from "../components/AnimatedHeaderSection"
 import { servicesData } from "../constants";
 import { useMediaQuery } from "react-responsive";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 // import { useGSAP } from "@gsap/react";
 // import gsap from "gsap";
 const Services = () => {
@@ -33,6 +35,24 @@ const Services = () => {
     //         ease: "power1.inOut",
     //     });
     // });
+
+
+
+    useGSAP(()=>{
+        serviceRefs.current.forEach((el) => {
+            if(!el) return;
+            gsap.from(el,{
+                y: 200,
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top 80%",
+
+                },
+                duration: 1,
+                ease: "circ.out"
+            })
+        })
+    },[])
 
     return (
         <section id='services' className="min-h-screen bg-black rounded-t-4xl ">
