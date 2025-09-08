@@ -138,15 +138,26 @@ results and impact.`;
               <div className="w-full h-0.5 bg-black/80" />
 
               {/* framework  */}
-              <div className="flex px-10 text-xs leading-loose uppercase transition-all duration-500 md:text-sm gap-x-5 md:group-hover:px-12">
-                {
+              <div className="flex px-10 text-xs leading-loose uppercase transition-all duration-500 md:text-sm gap-x-5 md:group-hover:px-12 group-hover:text-white">
+                
+               {
+                  project.links.map((link) => (
+                     <a href={link.url} key={link.id} className="text-black transition-all duration-300 group-hover:text-white hover:animate-bounce hover:text-pink-400 ">
+                      {link.name} 
+                    </a>
+                  ))
+                } | {
                   project.frameworks.map((framework) => (
                     <p key={framework.id} className="text-black transition-colors duration-500 group-hover:text-white">
-                      {framework.name}
+                      {framework.name} 
                     </p>
                   ))
-                }
+                } 
               </div>
+
+          
+
+             
               {/* mobile preview images  */}
               <div className="relative flex items-center justify-center px-10 md:hidden h-[400px]">
                 <img src={project.bgImage} alt="" className="object-cover w-full h-full rounded-md brightness-50" />

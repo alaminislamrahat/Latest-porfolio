@@ -75,6 +75,11 @@ export const projects = [
       { id: 4, name: "MongoDB" },
       { id: 5, name: "Tailwind CSS" },
     ],
+    links: [
+      {id: 1, name: "client", url: "ww.fdslf"},
+      {id: 1, name: "server", url: "ww.fdslf"},
+      {id: 1, name: "live", url: "ww.fdslf"},
+    ]
   },
   {
     id: 2,
@@ -90,6 +95,11 @@ export const projects = [
       { id: 3, name: "Stripe API" },
       { id: 4, name: "Tailwind CSS" },
     ],
+    links: [
+      {id: 1, name: "client", url: "ww.fdslf"},
+      {id: 1, name: "server", url: "ww.fdslf"},
+      {id: 1, name: "live", url: "ww.fdslf"},
+    ]
   },
   {
     id: 3,
@@ -105,6 +115,11 @@ export const projects = [
       { id: 3, name: "SQL Server" },
       { id: 4, name: "Bootstrap" },
     ],
+    links: [
+      {id: 1, name: "client", url: "ww.fdslf"},
+      {id: 1, name: "server", url: "ww.fdslf"},
+      {id: 1, name: "live", url: "ww.fdslf"},
+    ]
   },
   {
     id: 4,
@@ -120,6 +135,11 @@ export const projects = [
       { id: 3, name: "MySQL" },
       { id: 4, name: "SCSS" },
     ],
+    links: [
+      {id: 1, name: "client", url: "ww.fdslf"},
+      {id: 1, name: "server", url: "ww.fdslf"},
+      {id: 1, name: "live", url: "ww.fdslf"},
+    ]
   },
   {
     id: 5,
@@ -135,6 +155,11 @@ export const projects = [
       { id: 3, name: "GraphQL" },
       { id: 4, name: "Material UI" },
     ],
+    links: [
+      {id: 1, name: "client", url: "ww.fdslf"},
+      {id: 1, name: "server", url: "ww.fdslf"},
+      {id: 1, name: "live", url: "ww.fdslf"},
+    ]
   },
   {
     id: 6,
@@ -150,6 +175,11 @@ export const projects = [
       { id: 3, name: "MongoDB" },
       { id: 4, name: "Chakra UI" },
     ],
+    links: [
+      {id: 1, name: "client", url: "ww.fdslf"},
+      {id: 1, name: "server", url: "ww.fdslf"},
+      {id: 1, name: "live", url: "ww.fdslf"},
+    ]
   },
 ];
 export const socials = [
