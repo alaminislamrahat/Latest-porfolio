@@ -6,31 +6,62 @@ import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 const Works = () => {
 
-  const previewRef = useRef(null)
+  const previewRef = useRef(null);
 
-  const [currentIndex, setCurrentIndex] = useState(null)
+  const overlayRef = useRef([]);
+
+  const [currentIndex, setCurrentIndex] = useState(null);
 
   const text = `Featured projects that have been meticulously
 crafted with passion to drive
 results and impact.`;
 
-const mouse = useRef({x: 0, y: 0})
-const moveX = useRef(null)
-const moveY = useRef(null)
-useGSAP(()=>{
-  moveX.current = gsap.quickTo(previewRef.current,"x",{
-    duration: 1.5,
-    ease: "power3.out"
+  const mouse = useRef({ x: 0, y: 0 })
+  const moveX = useRef(null)
+  const moveY = useRef(null)
+  useGSAP(() => {
+    moveX.current = gsap.quickTo(previewRef.current, "x", {
+      duration: 1.5,
+      ease: "power3.out"
+    })
+    moveY.current = gsap.quickTo(previewRef.current, "y", {
+      duration: 2,
+      ease: "power3.out"
+    })
+
+    gsap.from("#project",
+      {
+        y: 100,
+        opacity: 0,
+        delay: 0.5,
+        duration: 1,
+        stagger: 0.3,
+        ease: "back.out",
+        scrollTrigger: {
+          trigger: "#project"
+        }
+      }
+    )
   })
-  moveY.current = gsap.quickTo(previewRef.current,"y",{
-    duration: 2,
-    ease: "power3.out"
-  })
-})
 
   const handleMouseEnter = (index) => {
     if (window.innerWidth < 768) return;
     setCurrentIndex(index);
+
+    const el = overlayRef.current[index];
+    if (!el) return;
+    gsap.killTweensOf(el);
+    gsap.fromTo(el,
+      {
+        clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"
+      },
+      {
+        clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
+        duration: 0.15,
+        ease: "power2.out"
+      }
+    )
+
     gsap.to(previewRef.current, {
       opacity: 1,
       scale: 1,
@@ -41,6 +72,20 @@ useGSAP(()=>{
   const handleMouseLeave = (index) => {
     if (window.innerWidth < 768) return;
     setCurrentIndex(null);
+
+     const el = overlayRef.current[index];
+    if (!el) return;
+    gsap.killTweensOf(el);
+    gsap.to(el,
+      {
+        clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
+        duration: 0.2,
+        ease: "power2.out"
+      }
+     
+    )
+
+
     gsap.to(previewRef.current, {
       opacity: 0,
       scale: 0.95,
@@ -50,7 +95,7 @@ useGSAP(()=>{
   }
 
 
-  const handleMouseMove = (e)=>{
+  const handleMouseMove = (e) => {
     if (window.innerWidth < 768) return;
     mouse.current.x = e.clientX + 25
     mouse.current.y = e.clientY + 25
@@ -68,9 +113,9 @@ useGSAP(()=>{
         textColor={"text-black"}
         withScrollTrigger={true}
       />
-      <div 
-      onMouseMove={handleMouseMove}
-      className="relative flex flex-col font-light">
+      <div
+        onMouseMove={handleMouseMove}
+        className="relative flex flex-col font-light">
         {
           projects.map((project, index) => (
             <div
@@ -78,6 +123,10 @@ useGSAP(()=>{
               onMouseLeave={() => handleMouseLeave(index)}
               key={index} id="project"
               className="relative flex flex-col gap-1 py-5 cursor-pointer md:gap-0 group">
+              {/* overlay  */}
+              <div
+                ref={(el) => overlayRef.current[index] = el}
+                className="absolute hidden md:block inset-0 duration-200 bg-black -z-10 clip-path" />
               {/* title  */}
               <div className="flex justify-between px-10 text-black transition-all duration-500 md:group-hover:px-12 group-hover:text-white">
                 <h2 className="lg:text-[32px] text-[26px] leading-none">
