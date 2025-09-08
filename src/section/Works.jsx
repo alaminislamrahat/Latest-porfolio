@@ -3,6 +3,7 @@ import AnimatedHeaderSection from "../components/AnimatedHeaderSection"
 import { projects } from "../constants"
 import { useRef, useState } from "react"
 import gsap from "gsap"
+import { useGSAP } from "@gsap/react"
 const Works = () => {
 
   const previewRef = useRef(null)
@@ -12,6 +13,20 @@ const Works = () => {
   const text = `Featured projects that have been meticulously
 crafted with passion to drive
 results and impact.`;
+
+const mouse = useRef({x: 0, y: 0})
+const moveX = useRef(null)
+const moveY = useRef(null)
+useGSAP(()=>{
+  moveX.current = gsap.quickTo(previewRef.current,"x",{
+    duration: 1.5,
+    ease: "power3.out"
+  })
+  moveY.current = gsap.quickTo(previewRef.current,"y",{
+    duration: 2,
+    ease: "power3.out"
+  })
+})
 
   const handleMouseEnter = (index) => {
     if (window.innerWidth < 768) return;
@@ -35,6 +50,15 @@ results and impact.`;
   }
 
 
+  const handleMouseMove = (e)=>{
+    if (window.innerWidth < 768) return;
+    mouse.current.x = e.clientX + 25
+    mouse.current.y = e.clientY + 25
+    moveX.current(mouse.current.x)
+    moveY.current(mouse.current.y)
+  }
+
+
   return (
     <section id="work" className="flex flex-col min-h-screen">
       <AnimatedHeaderSection
@@ -44,7 +68,9 @@ results and impact.`;
         textColor={"text-black"}
         withScrollTrigger={true}
       />
-      <div className="relative flex flex-col font-light">
+      <div 
+      onMouseMove={handleMouseMove}
+      className="relative flex flex-col font-light">
         {
           projects.map((project, index) => (
             <div
@@ -85,7 +111,7 @@ results and impact.`;
         {/* desktop floating follow image  */}
         <div
           ref={previewRef}
-          className="fixed top-0 left-0 z-50 overflow-hidden border-8 border-black pointer-events-none w-[960px] md:block hidden opacity-0">
+          className="fixed -top-2/6 left-0 z-50 overflow-hidden border-8 border-black pointer-events-none w-[960px] md:block hidden opacity-0">
           {
             currentIndex !== null && (<img src={projects[currentIndex].image} alt="preview" className="object-cover w-full h-full " />)
           }
