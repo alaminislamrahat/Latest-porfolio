@@ -8,6 +8,7 @@ import { useGSAP } from '@gsap/react'
 import ReactLenis from 'lenis/react'
 import About from './section/About'
 import Works from './section/Works'
+import ContactSummery from './section/ContactSummery'
 
 gsap.registerPlugin(ScrollTrigger)
 const App = () => {
@@ -15,12 +16,12 @@ const App = () => {
   return (
     <ReactLenis root className='relative min-h-screen w-screen '>
       <Navbar />
-
-      <Hero />
+       <Hero />
       <ServiceSummery />
       <Services />
       <About />
       <Works />
+      <ContactSummery/>
       <section className='min-h-screen'></section>
     </ReactLenis>
   )

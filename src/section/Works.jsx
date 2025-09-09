@@ -73,7 +73,7 @@ results and impact.`;
     if (window.innerWidth < 768) return;
     setCurrentIndex(null);
 
-     const el = overlayRef.current[index];
+    const el = overlayRef.current[index];
     if (!el) return;
     gsap.killTweensOf(el);
     gsap.to(el,
@@ -82,7 +82,7 @@ results and impact.`;
         duration: 0.2,
         ease: "power2.out"
       }
-     
+
     )
 
 
@@ -128,7 +128,7 @@ results and impact.`;
                 ref={(el) => overlayRef.current[index] = el}
                 className="absolute hidden md:block inset-0 duration-200 bg-black -z-10 clip-path" />
               {/* title  */}
-              <div className="flex justify-between px-10 text-black transition-all duration-500 md:group-hover:px-12 group-hover:text-white">
+              <div className="flex flex-col md:flex-row justify-between px-10 text-black transition-all duration-500 md:group-hover:px-12 group-hover:text-white">
                 <h2 className="lg:text-[32px] text-[26px] leading-none">
                   {project.name}
                 </h2>
@@ -138,26 +138,28 @@ results and impact.`;
               <div className="w-full h-0.5 bg-black/80" />
 
               {/* framework  */}
-              <div className="flex px-10 text-xs leading-loose uppercase transition-all duration-500 md:text-sm gap-x-5 md:group-hover:px-12 group-hover:text-white">
-                
-               {
+              <div className="flex flex-col md:flex-row px-10 text-xs leading-loose uppercase transition-all duration-500 md:text-sm gap-x-5 md:group-hover:px-12 group-hover:text-white">
+
+                {
                   project.links.map((link) => (
-                     <a href={link.url} key={link.id} className="text-black transition-all duration-300 group-hover:text-white hover:animate-bounce hover:text-pink-400 ">
-                      {link.name} 
+                    <a href={link.url} key={link.id} className="text-black transition-all duration-300 group-hover:text-white hover:animate-bounce hover:text-pink-400 ">
+                      {link.name}
                     </a>
                   ))
-                } | {
+                } <span className="hidden md:block">|</span>
+                  <span className="block md:hidden">--------------</span>
+                {
                   project.frameworks.map((framework) => (
                     <p key={framework.id} className="text-black transition-colors duration-500 group-hover:text-white">
-                      {framework.name} 
+                      {framework.name}
                     </p>
                   ))
-                } 
+                }
               </div>
 
-          
 
-             
+
+
               {/* mobile preview images  */}
               <div className="relative flex items-center justify-center px-10 md:hidden h-[400px]">
                 <img src={project.bgImage} alt="" className="object-cover w-full h-full rounded-md brightness-50" />
