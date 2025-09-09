@@ -9,6 +9,7 @@ import ReactLenis from 'lenis/react'
 import About from './section/About'
 import Works from './section/Works'
 import ContactSummery from './section/ContactSummery'
+import Contact from './section/Contact'
 
 gsap.registerPlugin(ScrollTrigger)
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
       <About />
       <Works />
       <ContactSummery/>
+      <Contact/>
       <section className='min-h-screen'></section>
     </ReactLenis>
   )
