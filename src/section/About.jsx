@@ -57,7 +57,7 @@ useGSAP(()=>{
         <img
           ref={imgRef}
           className="w-md rounded-3xl"
-          src="/images/rahat portfolio.jpg"
+          src="/images/porfolio old.jpeg"
           alt="" />
           <AnimatedLines text={aboutText} className={"w-full"}/>
       </div>
