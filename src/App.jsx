@@ -24,7 +24,6 @@ const App = () => {
       <Works />
       <ContactSummery/>
       <Contact/>
-      <section className='min-h-screen'></section>
     </ReactLenis>
   )
 }

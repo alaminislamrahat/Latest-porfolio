@@ -1,10 +1,32 @@
 
+import { useGSAP } from "@gsap/react";
 import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
+import Marquee from "../components/Marquee";
+import { socials } from "../constants";
+import gsap from "gsap";
 
 const Contact = () => {
 
   const text = ` Got a question, how or project Idea?
 WE O love to hear from you and discus further!;`
+
+const items = ["Just Imagin, I Code", "Just Imagin, I Code", "Just Imagin, I Code", "Just Imagin, I Code", "Just Imagin, I Code",]
+
+
+useGSAP(()=>{
+  gsap.from(".social-link",{
+    y: 100,
+    opacity: 0,
+    duration: 1,
+    delay: 0.5,
+    stagger: 0.3,
+    ease: "back.out",
+    scrollTrigger: {
+      trigger: ".social-link"
+    }
+
+  })
+},[])
 
   return (
     <section id="contact" className="flex flex-col justify-between min-h-screen bg-black">
@@ -25,6 +47,7 @@ WE O love to hear from you and discus further!;`
               <div className="w-full h-px my-2 bg-white/30"/>
               <p className="text-xl tracking-wider lowercase md:text-2xl lg:text-3xl">alaminislamrahat@gmail.com</p>
             </div>
+
             <div className="social-link">
               <h2>
                 Phone
@@ -33,10 +56,33 @@ WE O love to hear from you and discus further!;`
               <p className="text-xl tracking-wider lowercase md:text-2xl lg:text-3xl">01575231473</p>
             </div>
 
+            <div className="social-link">
+              <h2>
+                Socila Media
+              </h2>
+              <div className="w-full h-px my-2 bg-white/30"/>
+              <div className="flex flex-wrap gap-2">
+                {
+                  socials.map((social, index) => (
+                    <a 
+                    href={social.href}
+                    className="text-xs leading-loose tracking-wides uppercase md:text-sm hover:text-white/80 transition-colors duration-200"
+                    key={index}>
+                      {"{"}
+                      {social.name}
+                      {"}"}
+                    </a>
+                  ))
+                }
+              </div>
+            </div>
+
             
           </div>
         </div>
       </div>
+
+      <Marquee items={items} className="text-white bg-transparent"/>
     </section>
   )
 }
