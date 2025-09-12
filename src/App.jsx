@@ -14,33 +14,51 @@ import { useProgress } from '@react-three/drei'
 import { useEffect, useState } from 'react'
 
 gsap.registerPlugin(ScrollTrigger)
-const App = () => {
 
-  const { progress } = useProgress();
-  const [isReady, setIsReady] = useState(false);
+const App = () => {
+  const { progress } = useProgress()
+  const [isReady, setIsReady] = useState(false)
 
   useEffect(() => {
     if (progress === 100) {
-      setIsReady(true)
+      const handlePageLoad = () => {
+        // add small delay for smooth fade
+        setTimeout(() => setIsReady(true), 500)
+      }
+
+      if (document.readyState === 'complete') {
+        handlePageLoad()
+      } else {
+        window.addEventListener('load', handlePageLoad)
+        return () => window.removeEventListener('load', handlePageLoad)
+      }
     }
   }, [progress])
 
   return (
     <ReactLenis root className='relative min-h-screen w-screen overflow-x-hidden'>
-      {!isReady && (
-        <div className='fixed inset-0 z-[999] flex flex-col items-center justify-center bg-black text-white transition-opacity duration-700 font-light '>
-          <p className='mb-4 text-xl tracking-widest animate-pulse'>
-            {Math.floor(progress)}%
-          </p>
-          <div className='relative h-1 overflow-hidden rounded w-60 bg-white/20'>
+      {/* Loader */}
+      <div
+        className={`fixed inset-0 z-[999] flex flex-col items-center justify-center bg-black text-white font-light transition-opacity duration-700
+        ${isReady ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+      >
+        <p className='mb-4 text-xl tracking-widest animate-pulse'>
+          {Math.floor(progress)}%
+        </p>
+        <div className='relative h-1 overflow-hidden rounded w-60 bg-white/20'>
           <div
-          style={{width : `${progress}%`}}
-           className='absolute inset-0 top-0 left-0 h-full transition-all duration-300 bg-white'></div>
-          </div>
+            style={{ width: `${progress}%` }}
+            className='absolute inset-0 top-0 left-0 h-full transition-all duration-300 bg-white'
+          ></div>
         </div>
-      )}
+      </div>
 
-      <div className={`${progress === 100 ? "opacity-100" : "opacity-0"} transition-opacity duration-1000`}>
+      {/* Main content */}
+      <div
+        className={`${
+          isReady ? 'opacity-100' : 'opacity-0'
+        } transition-opacity duration-1000`}
+      >
         <Navbar />
         <Hero />
         <ServiceSummery />
